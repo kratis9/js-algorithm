@@ -47,7 +47,6 @@ class DoublyLinkedList {
         return removedHead.data;
     }
 
-    // Create your .removeTail() method below:
     removeTail() {
         const removedTail = this.tail;
         if (!removedTail) {
@@ -63,7 +62,6 @@ class DoublyLinkedList {
         return removedTail.data;
     }
 
-    // Create your .removeByData() method below:
     removeByData(data) {
         let nodeToRemove;
         let currentNode = this.head;
@@ -77,6 +75,18 @@ class DoublyLinkedList {
         if (!nodeToRemove) {
             return null;
         }
+        // Continue your .removeByData() method below:
+        if (nodeToRemove === this.head) {
+            this.removeHead();
+        } else if (nodeToRemove === this.tail) {
+            this.removeTail();
+        } else {
+            const nextNode = nodeToRemove.getNextNode();
+            const previousNode = nodeToRemove.getPreviousNode();
+            nextNode.setPreviousNode(previousNode);
+            previousNode.setNextNode(nextNode);
+        }
+        return nodeToRemove;
     }
 
     printList() {
