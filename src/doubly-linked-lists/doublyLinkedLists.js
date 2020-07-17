@@ -63,6 +63,22 @@ class DoublyLinkedList {
         return removedTail.data;
     }
 
+    // Create your .removeByData() method below:
+    removeByData(data) {
+        let nodeToRemove;
+        let currentNode = this.head;
+        while (currentNode !== null) {
+            if (currentNode.data === data) {
+                nodeToRemove = currentNode;
+                break;
+            }
+            currentNode = currentNode.getNextNode();
+        }
+        if (!nodeToRemove) {
+            return null;
+        }
+    }
+
     printList() {
         let currentNode = this.head;
         let output = '<head> ';
