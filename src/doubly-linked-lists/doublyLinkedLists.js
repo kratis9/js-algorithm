@@ -1,6 +1,6 @@
-const Node = require('./Node');
+import Node from '../node';
 
-class DoublyLinkedList {
+export default class DoublyLinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
@@ -97,8 +97,7 @@ class DoublyLinkedList {
             currentNode = currentNode.getNextNode();
         }
         output += '<tail>';
-        console.log(output);
+        console.log(output); //?
     }
 }
 
-module.exports = DoublyLinkedList;
