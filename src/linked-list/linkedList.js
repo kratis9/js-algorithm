@@ -1,4 +1,4 @@
-const Node = require('../node');
+import Node from '../node';
 
 export default class LinkedList {
     constructor() {
@@ -47,5 +47,3 @@ export default class LinkedList {
         console.log(output);
     }
 }
-
-
