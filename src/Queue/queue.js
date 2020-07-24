@@ -1,21 +1,52 @@
-import LinkedList from '../linked-list/linkedList';
+const LinkedList = require('./LinkedList');
 
-export default class Queue {
-    constructor() {
+class Queue {
+    constructor(maxSize = Infinity) {
         this.queue = new LinkedList();
+        this.maxSize = maxSize;
         this.size = 0;
     }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    hasRoom() {
+        return this.size < this.maxSize;
+    }
+
     enqueue(data) {
-        this.queue.addToTail(data);
-        this.size += 1;
-        console.log(`Added ${data}! Queue size is now ${this.size}.`)
+        if (this.hasRoom()) {
+            this.queue.addToTail(data);
+            this.size++;
+            console.log(`Added ${data} to queue! Queue size is now ${this.size}.`);
+        } else {
+            throw new Error("Queue is full!");
+        }
+
     }
 
     dequeue() {
-        const data = this.queue.removeHead();
-        this.size = this.size - 1;
-        console.log(`Removed ${data} to queue! Queue size is now ${this.size}.`);
-        return data;
-
+        if (!this.isEmpty()) {
+            const data = this.queue.removeHead();
+            this.size--;
+            console.log(`Removed ${data} from queue! Queue size is now ${this.size}.`);
+            return data;
+        } else {
+            throw new Error("Queue is empty!");
+        }
     }
 }
+
+module.exports = Queue;
+
+const boundedQueue = new Queue(3);
+
+boundedQueue.enqueue(1);
+boundedQueue.enqueue(2);
+boundedQueue.enqueue(3);
+
+boundedQueue.dequeue();
+boundedQueue.dequeue();
+boundedQueue.dequeue();
+boundedQueue.dequeue();
