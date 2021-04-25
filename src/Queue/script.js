@@ -1,4 +1,4 @@
-const runway = require('./runway');
+import runway from './runway';
 
 const flights = [
     'Botswana Bird flight #345',
